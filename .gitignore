@@ -1,0 +1,5 @@
+/result
+/result-*
+/.envrc
+/*.db
+/dendrite-p2p-pinecone.key
