@@ -1,7 +1,7 @@
 { ... }:
 
 let
-  nix-matrix-pinecone = (import ./default.nix).main;
+  nix-matrix-pinecone = (import ./default.nix { }).main;
 in
 {
   name = "nix-matrix-pinecone-test";
