@@ -15,10 +15,8 @@ with pkgs;
 
     src = fetchFromGitHub { inherit (sources.dendrite) owner repo rev sha256; };
 
-    vendorSha256 = "sha256-zNamxhaSMxH0C/EZUnLjb4aigtO+HUb6cNbnAv9aaLc=";
+    vendorSha256 = "sha256-V2KfGkUVP/xa/hdehghGkdfcRffvuNw/n4kKxUpTGjw=";
     subPackages = [ "cmd/dendrite-demo-pinecone" ];
-
-    patches = [ ./go.mod.diff ];
   };
 
   test = pkgs.nixosTest ./test.nix;
