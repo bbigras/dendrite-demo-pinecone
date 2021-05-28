@@ -15,7 +15,7 @@
         let pkgs = import nixpkgs { inherit system; }; in
         {
           defaultPackage = (import ./default.nix { inherit pkgs dendrite; }).main;
-          # devShell = import ./shell.nix { inherit pkgs; };
+          devShell = import ./shell.nix { inherit pkgs; };
         }
       );
 }
