@@ -7,14 +7,18 @@
       url = "github:matrix-org/dendrite";
       flake = false;
     };
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, flake-utils, dendrite }:
+  outputs = { self, nixpkgs, flake-utils, dendrite, flake-compat }:
     flake-utils.lib.eachDefaultSystem
       (system:
         let pkgs = import nixpkgs { inherit system; }; in
         {
-          defaultPackage = (import ./default.nix { inherit pkgs dendrite; }).main;
+          defaultPackage = (import ./build.nix { inherit pkgs dendrite; }).main;
           devShell = import ./shell.nix { inherit pkgs; };
         }
       );

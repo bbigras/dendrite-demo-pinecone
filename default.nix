@@ -1,15 +1,13 @@
-{ pkgs, dendrite }:
-
-with pkgs;
-{
-  main = buildGoModule {
-    name = "nix-matrix-pinecone";
-
-    src = dendrite;
-
-    vendorSha256 = "sha256-Fs28HlNxyz/oU2FRxw7QV0xkN7VKgoZ6bYUx0HWHSP8=";
-    subPackages = [ "cmd/dendrite-demo-pinecone" ];
-  };
-
-  test = pkgs.nixosTest ./test.nix;
-}
+(import
+  (
+    let
+      lock = builtins.fromJSON (builtins.readFile ./flake.lock);
+    in
+    fetchTarball {
+      url = "https://github.com/edolstra/flake-compat/archive/${lock.nodes.flake-compat.locked.rev}.tar.gz";
+      sha256 = lock.nodes.flake-compat.locked.narHash;
+    }
+  )
+  {
+    src = ./.;
+  }).defaultNix
