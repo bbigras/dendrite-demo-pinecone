@@ -1,16 +1,16 @@
 { ... }:
 
 let
-  nix-matrix-pinecone = (import ./default.nix { }).main;
+  dendrite-demo-pinecone = (import ./default.nix { }).main;
 in
 {
-  name = "nix-matrix-pinecone-test";
+  name = "dendrite-demo-pinecone-test";
   nodes.server = { ... }: {
 
     systemd.services.matrix-pinecone = {
       description = "matrix-pinecone";
       serviceConfig = {
-        ExecStart = "${nix-matrix-pinecone}/bin/dendrite-demo-pinecone";
+        ExecStart = "${dendrite-demo-pinecone}/bin/dendrite-demo-pinecone";
       };
       wantedBy = [ "default.target" ];
     };

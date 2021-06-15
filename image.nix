@@ -1,15 +1,15 @@
 { pkgs, dendrite }:
 
 let
-  nix-matrix-pinecone = (import ./build.nix { inherit pkgs dendrite; }).main;
+  dendrite-demo-pinecone = (import ./build.nix { inherit pkgs dendrite; }).main;
 in
 pkgs.dockerTools.buildLayeredImage {
-  name = "nix-matrix-pinecone";
+  name = "dendrite-demo-pinecone";
   created = "now";
   tag = "latest";
 
   contents = [
-    nix-matrix-pinecone
+    dendrite-demo-pinecone
     pkgs.cacert
   ];
   config = {

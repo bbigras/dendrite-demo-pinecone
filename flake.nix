@@ -1,5 +1,5 @@
 {
-  description = "nix-matrix-pinecone";
+  description = "dendrite-demo-pinecone";
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";

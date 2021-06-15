@@ -3,7 +3,7 @@
 with pkgs;
 {
   main = buildGoModule {
-    name = "nix-matrix-pinecone";
+    name = "dendrite-demo-pinecone";
 
     src = dendrite;
 
