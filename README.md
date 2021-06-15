@@ -8,13 +8,18 @@ I just made this to be able to run [dendrite-demo-pinecone](https://github.com/m
 
 ### Using the cachix binary cache
 ```sh
-nix-env -if https://github.com/bbigras/dendrite-demo-pinecone/tarball/master --substituters https://dendrite-demo-pinecone.cachix.org --trusted-public-keys dendrite-demo-pinecone.cachix.org-1:qgybhOM1X0JikTrvpYo1HwtsXT2ee+6ajbmCjCns4yI=
+nix-env \
+    -if https://github.com/bbigras/dendrite-demo-pinecone/tarball/master \
+    --substituters https://dendrite-demo-pinecone.cachix.org \
+    --trusted-public-keys dendrite-demo-pinecone.cachix.org-1:qgybhOM1X0JikTrvpYo1HwtsXT2ee+6ajbmCjCns4yI=
 ```
 
 ## Run
 
 ```sh
-dendrite-demo-pinecone -peer wss://pinecone.matrix.org/public -listen :<some_port>
+dendrite-demo-pinecone \
+    -peer wss://pinecone.matrix.org/public \
+    -listen :<some_port>
 ```
 
 ## Docker image
