@@ -21,7 +21,9 @@ nix-build -A packages.x86_64-linux.dockerImage
 nix build .#dockerImage
 ```
 
+## Acknowledgements
 
+The auto-update script is from https://github.com/colemickens/nixpkgs-wayland.
 
 # Contact
 

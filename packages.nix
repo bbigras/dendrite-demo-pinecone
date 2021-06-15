@@ -1,3 +1,5 @@
+# from https://github.com/colemickens/nixpkgs-wayland/blob/c9c4a80715557caf57f403038a267f3c20859424/packages.nix
+
 # mostly used since nix-build-uncached needs it
 # but also to fan out the packages into a list that only nix-build can build
 let
