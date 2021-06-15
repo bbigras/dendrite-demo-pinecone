@@ -1,6 +1,6 @@
 # dendrite-demo-pinecone [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org) ![CI](https://github.com/bbigras/dendrite-demo-pinecone/workflows/CI/badge.svg)
 
-⚠️ **NOTE:** This repo is not affiliated to [Matrix](https://matrix.org/) nor [Pinecone](https://pinecone-network.github.io/) in any way.
+⚠️ **NOTE:** This repo is not affiliated to [Matrix](https://matrix.org/) nor [Pinecone](https://github.com/matrix-org/pinecone) in any way.
 
 I just made this to be able to run [dendrite-demo-pinecone](https://github.com/matrix-org/dendrite/tree/master/cmd/dendrite-demo-pinecone) easily on my computers.
 
