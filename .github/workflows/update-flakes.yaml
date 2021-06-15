@@ -14,6 +14,7 @@ jobs:
         with:
           install_url: https://nixos-nix-install-tests.cachix.org/serve/sp832rai317zyw7ikhlzv454zh9qr3dv/install
           install_options: '--tarball-url-prefix https://nixos-nix-install-tests.cachix.org/serve'
+          nix_path: 'nixpkgs=channel:nixos-unstable'
           extra_nix_config: |
             experimental-features = nix-command flakes
       - uses: cachix/cachix-action@v10
