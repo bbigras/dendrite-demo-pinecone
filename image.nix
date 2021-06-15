@@ -23,7 +23,8 @@ pkgs.dockerTools.buildLayeredImage {
     ExposedPorts = {
       "5977/tcp" = { };
       "5977/udp" = { };
-      "60606/udp" = { };
+      "8008/tcp" = { } ; # client API
+      "60606/udp" = { }; # multicast
     };
     WorkingDir = "/data";
     Volumes = {
