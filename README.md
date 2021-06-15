@@ -32,6 +32,8 @@ nix-build -A packages.x86_64-linux.dockerImage
 
 # with nix flakes
 nix build .#dockerImage
+
+docker load < ./result
 ```
 
 ## Acknowledgements
