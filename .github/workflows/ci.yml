@@ -42,6 +42,10 @@
           "run": "docker load < ./result"
         },
         {
+          "name": "Tag docker image",
+          "run": "docker tag dendrite-demo-pinecone bbigras/dendrite-demo-pinecone"
+        },
+        {
           "name": "Log in to Docker Hub",
           "uses": "docker/login-action@v1",
           "with": {
