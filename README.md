@@ -25,6 +25,6 @@ nix build .#dockerImage
 
 The auto-update script is from https://github.com/colemickens/nixpkgs-wayland.
 
-# Contact
+## Contact
 
 I'm `bbigras` in [#p2p:matrix.org](https://matrix.to/#/#p2p:matrix.org)
