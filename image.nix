@@ -25,5 +25,9 @@ pkgs.dockerTools.buildLayeredImage {
       "5977/udp" = { };
       "60606/udp" = { };
     };
+    WorkingDir = "/data";
+    Volumes = {
+      "/data" = { };
+    };
   };
 }
