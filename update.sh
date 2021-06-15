@@ -2,6 +2,9 @@
 
 # based on https://github.com/colemickens/nixpkgs-wayland/blob/c9c4a80715557caf57f403038a267f3c20859424/update.sh
 
+set -euo pipefail
+set -x
+
 nix-env -i nix-prefetch
 
 vendorSha256="$(nix-instantiate ./packages.nix -A dendrite.vendorSha256 --eval 2>/dev/null | jq -r . || echo "missing_vendorSha256")"
