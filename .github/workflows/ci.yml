@@ -51,11 +51,7 @@
         },
         {
           "name": "Push to Docker Hub",
-          "uses": "docker/build-push-action@v2",
-          "with": {
-            "push": "true",
-            "tags": "bbigras/dendrite-demo-pinecone",
-          },
+          "run": "docker push bbigras/dendrite-demo-pinecone"
         }
       ]
     }
