@@ -22,7 +22,9 @@ dendrite-demo-pinecone -peer wss://pinecone.matrix.org/public -listen :<some_por
 [bbigras/dendrite-demo-pinecone](https://hub.docker.com/repository/docker/bbigras/dendrite-demo-pinecone) on docker hub.
 
 ```sh
-docker pull bbigras/dendrite-demo-pinecone
+docker run \
+    --net host \
+    bbigras/dendrite-demo-pinecone
 ```
 
 To build the image:
