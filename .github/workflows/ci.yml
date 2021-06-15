@@ -25,7 +25,7 @@
           "name": "Cachix",
           "uses": "cachix/cachix-action@v10",
           "with": {
-            "name": "nix-matrix-pinecone",
+            "name": "dendrite-demo-pinecone",
             "signingKey": "'${{ secrets.CACHIX_SIGNING_KEY }}'"
           }
         },

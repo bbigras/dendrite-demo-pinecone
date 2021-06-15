@@ -18,7 +18,7 @@ jobs:
             experimental-features = nix-command flakes
       - uses: cachix/cachix-action@v10
         with:
-          name: nix-matrix-pinecone
+          name: dendrite-demo-pinecone
           signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
       - run: git config --global user.email "noreply@github.com"
       - run: git config --global user.name "GitHub"
