@@ -24,6 +24,10 @@ jobs:
       - run: git config --global user.name "GitHub"
       - name: Update flakes
         run: nix flake update --commit-lock-file
+      - name: Update vendorSha256
+        run: ./update.sh
+      - name: git commit (amend)
+        run: git commit --amend --no-edit
       - uses: peter-evans/create-pull-request@v3.10.0
         with:
           branch: flake-update
