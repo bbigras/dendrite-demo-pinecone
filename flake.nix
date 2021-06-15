@@ -19,6 +19,7 @@
         let pkgs = import nixpkgs { inherit system; }; in
         {
           defaultPackage = (import ./build.nix { inherit pkgs dendrite; }).main;
+          packages.dendrite = (import ./build.nix { inherit pkgs dendrite; }).main;
           packages.dockerImage = import ./image.nix { inherit pkgs dendrite; };
           devShell = import ./shell.nix { inherit pkgs; };
         }
