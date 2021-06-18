@@ -16,7 +16,7 @@ jobs:
           install_options: '--tarball-url-prefix https://nixos-nix-install-tests.cachix.org/serve'
           nix_path: 'nixpkgs=channel:nixos-unstable'
           extra_nix_config: |
-            experimental-features = nix-command flakes
+            experimental-features = nix-command flakes ca-derivations ca-references
       - uses: cachix/cachix-action@v10
         with:
           name: dendrite-demo-pinecone
