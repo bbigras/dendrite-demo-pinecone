@@ -2,6 +2,7 @@
   description = "dendrite-demo-pinecone";
 
   inputs = {
+    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     dendrite = {
       url = "github:matrix-org/dendrite";
