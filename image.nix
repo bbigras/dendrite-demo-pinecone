@@ -13,8 +13,10 @@ pkgs.dockerTools.buildLayeredImage {
     pkgs.cacert
   ];
   config = {
+    Entrypoint = [
+      "${dendrite-demo-pinecone}/bin/dendrite-demo-pinecone"
+    ];
     Cmd = [
-      "dendrite-demo-pinecone"
       "-peer"
       "wss://pinecone.matrix.org/public"
       "-listen"
