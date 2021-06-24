@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "dendrite-demo-pinecone.fullname" . }}
+  labels:
+    {{- include "dendrite-demo-pinecone.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "dendrite-demo-pinecone.selectorLabels" . | nindent 4 }}
