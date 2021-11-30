@@ -3,19 +3,19 @@
 # mostly used since nix-build-uncached needs it
 # but also to fan out the packages into a list that only nix-build can build
 let
-flake = (import
-  (
-    let
-      lock = builtins.fromJSON (builtins.readFile ./flake.lock);
-    in
-    fetchTarball {
-      url = "https://github.com/edolstra/flake-compat/archive/${lock.nodes.flake-compat.locked.rev}.tar.gz";
-      sha256 = lock.nodes.flake-compat.locked.narHash;
-    }
-  )
-  {
-    src = ./.;
-  }).defaultNix;
+  flake = (import
+    (
+      let
+        lock = builtins.fromJSON (builtins.readFile ./flake.lock);
+      in
+      fetchTarball {
+        url = "https://github.com/edolstra/flake-compat/archive/${lock.nodes.flake-compat.locked.rev}.tar.gz";
+        sha256 = lock.nodes.flake-compat.locked.narHash;
+      }
+    )
+    {
+      src = ./.;
+    }).defaultNix;
 
   # flake = (import (fetchTarball {
   #   url="https://github.com/edolstra/flake-compat/archive/c75e76f80c57784a6734356315b306140646ee84.tar.gz";
@@ -24,4 +24,4 @@ flake = (import
   #   src = ./.;
   # }).defaultNix;
 in
-  flake.packages."${builtins.currentSystem}"
+flake.packages."${builtins.currentSystem}"
