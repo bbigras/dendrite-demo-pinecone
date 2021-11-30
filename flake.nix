@@ -1,5 +1,6 @@
 {
   description = "dendrite-demo-pinecone";
+  nixConfig.substituters = [ "https://dendrite-demo-pinecone.cachix.org" ];
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
