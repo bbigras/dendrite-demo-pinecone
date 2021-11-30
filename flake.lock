@@ -62,12 +62,36 @@
         "type": "indirect"
       }
     },
+    "pre-commit-hooks": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1637745948,
+        "narHash": "sha256-DmQG1bZk24eS+BAHwnHPyYIadMLKbq0d1b//iapYIPU=",
+        "owner": "cachix",
+        "repo": "pre-commit-hooks.nix",
+        "rev": "c3b4f94350b0e59c2546fa85890cc70d03616b9c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cachix",
+        "repo": "pre-commit-hooks.nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "dendrite": "dendrite",
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "pre-commit-hooks": "pre-commit-hooks"
       }
     }
   },

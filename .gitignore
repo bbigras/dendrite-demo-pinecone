@@ -3,3 +3,4 @@
 /.envrc
 /*.db
 /dendrite-p2p-pinecone.key
+/.pre-commit-config.yaml
