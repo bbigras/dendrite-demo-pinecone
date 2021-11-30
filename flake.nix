@@ -1,5 +1,13 @@
 {
   description = "dendrite-demo-pinecone";
+  nixConfig.substituters = [
+    "https://cache.nixos.org"
+    "https://dendrite-demo-pinecone.cachix.org"
+  ];
+  nixConfig.trusted-public-keys = [
+    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+    "dendrite-demo-pinecone.cachix.org-1:qgybhOM1X0JikTrvpYo1HwtsXT2ee+6ajbmCjCns4yI="
+  ];
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
