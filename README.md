@@ -23,13 +23,12 @@ dendrite-demo-pinecone \
 ```
 
 ## Docker image
-
-[bbigras/dendrite-demo-pinecone](https://hub.docker.com/repository/docker/bbigras/dendrite-demo-pinecone) on docker hub.
+[ghcr.io/bbigras/dendrite-demo-pinecone](https://github.com/bbigras/dendrite-demo-pinecone/pkgs/container/dendrite-demo-pinecone).
 
 ```sh
 docker run \
     --net host \
-    bbigras/dendrite-demo-pinecone
+    ghcr.io/bbigras/dendrite-demo-pinecone
 ```
 
 To build the image:

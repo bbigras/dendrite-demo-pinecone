@@ -44,19 +44,15 @@
         },
         {
           "name": "Tag docker image",
-          "run": "docker tag dendrite-demo-pinecone bbigras/dendrite-demo-pinecone"
+          "run": "docker tag dendrite-demo-pinecone ghcr.io/bbigras/dendrite-demo-pinecone"
         },
         {
-          "name": "Log in to Docker Hub",
-          "uses": "docker/login-action@v1",
-          "with": {
-            "username": "${{ secrets.DOCKER_USERNAME }}",
-            "password": "${{ secrets.DOCKER_PASSWORD }}"
-          }
+          "name": "Log in to ghcr.io",
+          "run": "echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u bbigras --password-stdin"
         },
         {
-          "name": "Push to Docker Hub",
-          "run": "docker push bbigras/dendrite-demo-pinecone"
+          "name": "Push to ghcr.io",
+          "run": "docker push ghcr.io/bbigras/dendrite-demo-pinecone"
         }
       ]
     }
