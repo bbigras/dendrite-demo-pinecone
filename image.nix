@@ -5,7 +5,6 @@ let
 in
 pkgs.dockerTools.buildLayeredImage {
   name = "dendrite-demo-pinecone";
-  created = "now";
   tag = "latest";
 
   contents = [
