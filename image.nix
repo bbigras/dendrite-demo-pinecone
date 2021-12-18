@@ -3,7 +3,7 @@
 let
   dendrite-demo-pinecone = (import ./build.nix { inherit pkgs dendrite; }).main;
 in
-pkgs.dockerTools.buildLayeredImage {
+pkgs.dockerTools.streamLayeredImage {
   name = "dendrite-demo-pinecone";
   tag = "latest";
 

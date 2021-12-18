@@ -35,24 +35,16 @@
           "run": "nix build"
         },
         {
-          "name": "Build docker image",
+          "name": "Generate docker image script",
           "run": "nix build .#dockerImage"
-        },
-        {
-          "name": "Load docker image",
-          "run": "docker load < ./result"
-        },
-        {
-          "name": "Tag docker image",
-          "run": "docker tag dendrite-demo-pinecone ghcr.io/bbigras/dendrite-demo-pinecone"
         },
         {
           "name": "Log in to ghcr.io",
           "run": "echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u bbigras --password-stdin"
         },
         {
-          "name": "Push to ghcr.io",
-          "run": "docker push ghcr.io/bbigras/dendrite-demo-pinecone"
+          "name": "Build and push image",
+          "run": "./result | gzip | nix run nixpkgs#skopeo -- --insecure-policy copy docker-archive:/dev/stdin docker://ghcr.io/bbigras/dendrite-demo-pinecone"
         }
       ]
     }
