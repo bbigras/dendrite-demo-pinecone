@@ -16,6 +16,16 @@ nix-env \
 
 ## Run
 
+with `nix run` (nix flakes)
+```sh
+nix run \
+    --substituters https://dendrite-demo-pinecone.cachix.org \
+    --trusted-public-keys dendrite-demo-pinecone.cachix.org-1:qgybhOM1X0JikTrvpYo1HwtsXT2ee+6ajbmCjCns4yI= \
+    github:bbigras/dendrite-demo-pinecone -- \
+    -peer wss://pinecone.matrix.org/public \
+    -listen :<some_port>
+```
+
 ```sh
 dendrite-demo-pinecone \
     -peer wss://pinecone.matrix.org/public \
