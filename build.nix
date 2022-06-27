@@ -7,7 +7,7 @@ with pkgs;
 
     src = dendrite;
 
-    vendorSha256 = "sha256-H79bD7v5WYKHGSPpRaUJOVspnArFhupUIYqA4TuhEQg=";
+    vendorSha256 = "sha256-4kjxcAzFQ7Ix1A4vihgOtDnxZKdy92loJvm/G1f/dNs=";
     subPackages = [ "cmd/dendrite-demo-pinecone" ];
   };
 
