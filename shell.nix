@@ -9,9 +9,7 @@ let
       shellcheck.enable = true;
     };
     # generated files
-    excludes = [
-      "Cargo.nix"
-    ];
+    excludes = [ ];
   };
 in
 pkgs.mkShell {
