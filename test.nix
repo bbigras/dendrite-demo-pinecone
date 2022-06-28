@@ -1,12 +1,9 @@
-{ ... }:
-
 let
   dendrite-demo-pinecone = (import ./default.nix { }).main;
 in
 {
   name = "dendrite-demo-pinecone-test";
-  nodes.server = { ... }: {
-
+  nodes.server = {
     systemd.services.matrix-pinecone = {
       description = "matrix-pinecone";
       serviceConfig = {

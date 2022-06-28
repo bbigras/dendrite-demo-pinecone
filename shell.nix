@@ -4,9 +4,12 @@ let
   pre-commit-check = pre-commit-hooks.lib.${system}.run {
     src = ./.;
     hooks = {
-      nixpkgs-fmt.enable = true;
+      alejandra.enable = false;
       nix-linter.enable = true;
+      nixpkgs-fmt.enable = true;
       shellcheck.enable = true;
+      shfmt.enable = true;
+      statix.enable = true;
     };
     # generated files
     excludes = [ ];
