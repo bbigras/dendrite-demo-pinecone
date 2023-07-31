@@ -30,9 +30,9 @@ jobs:
       - run: after_hash=$(git rev-parse HEAD)
       - name: git commit (amend)
         run: |
-        if [ "$before_hash" != "$after_hash" ]; then
-          git commit --amend --no-edit
-        fi
+          if [ "$before_hash" != "$after_hash" ]; then
+            git commit --amend --no-edit
+          fi
       - uses: peter-evans/create-pull-request@v5
         with:
           branch: flake-update
