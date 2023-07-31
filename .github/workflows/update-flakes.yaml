@@ -23,10 +23,15 @@ jobs:
           signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
       - run: git config --global user.email "noreply@github.com"
       - run: git config --global user.name "GitHub"
+      - run: before_rev=$(nix flake metadata --json | jq ".locks.nodes.dendrite.locked.rev")
       - name: Update flakes
         run: nix flake update --commit-lock-file
+      - run: after_rev=$(nix flake metadata --json | jq ".locks.nodes.dendrite.locked.rev")
       - name: Update vendorSha256
-        run: ./update.sh
+        run: |
+          if [ "$before_rev" != "$after_rev" ]; then
+            ./update.sh
+          fi
       - name: git commit (amend)
         run: |
           if git status --porcelain | grep -q '^.M'; then
