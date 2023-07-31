@@ -34,10 +34,7 @@ jobs:
           if [ "$before_hash" != "$after_hash" ]; then
             git commit --amend --no-edit
           fi
-      - uses: peter-evans/create-pull-request@v5
-        with:
-          branch: flake-update
-          commit-message: "flake: update"
-          delete-branch: true
-          title: "flake: update"
-          token: ${{ secrets.PAT }}
+      - name: Enable Pull Request Automerge
+        run: gh pr merge --merge --auto
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}
