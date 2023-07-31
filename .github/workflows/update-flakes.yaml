@@ -40,3 +40,4 @@ jobs:
           commit-message: "flake: update"
           delete-branch: true
           title: "flake: update"
+          token: ${{ secrets.PAT }}
