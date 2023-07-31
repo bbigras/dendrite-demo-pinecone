@@ -5,7 +5,8 @@
       "branches": [
         "master"
       ]
-    }
+    },
+    "pull_request": {}
   },
   "jobs": {
     "build": {
@@ -47,7 +48,8 @@
         },
         {
           "name": "Build and push image",
-          "run": "./result | gzip | nix run nixpkgs#skopeo -- --insecure-policy copy docker-archive:/dev/stdin docker://ghcr.io/bbigras/dendrite-demo-pinecone"
+          "run": "./result | gzip | nix run nixpkgs#skopeo -- --insecure-policy copy docker-archive:/dev/stdin docker://ghcr.io/bbigras/dendrite-demo-pinecone",
+          "if": "${{ github.event_name == 'push' }}"
         }
       ]
     }
