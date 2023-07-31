@@ -35,6 +35,6 @@ jobs:
             git commit --amend --no-edit
           fi
       - name: Enable Pull Request Automerge
-        run: gh pr merge --merge --auto
+        run: gh pr merge --rebase --auto --delete-branch "flake-update"
         env:
           GH_TOKEN: ${{ secrets.PAT }}
