@@ -22,12 +22,17 @@ jobs:
           signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
       - run: git config --global user.email "noreply@github.com"
       - run: git config --global user.name "GitHub"
+      - run: before_hash=$(git rev-parse HEAD)
       - name: Update flakes
         run: nix flake update --commit-lock-file
       - name: Update vendorSha256
         run: ./update.sh
+      - run: after_hash=$(git rev-parse HEAD)
       - name: git commit (amend)
-        run: git commit --amend --no-edit
+        run: |
+        if [ "$before_hash" != "$after_hash" ]; then
+          git commit --amend --no-edit
+        fi
       - uses: peter-evans/create-pull-request@v5
         with:
           branch: flake-update
