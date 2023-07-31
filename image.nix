@@ -1,4 +1,4 @@
-{ pkgs, dendrite }:
+{ pkgs, dendrite, lastModifiedDate }:
 
 let
   dendrite-demo-pinecone = (import ./build.nix { inherit pkgs dendrite; }).main;
@@ -6,6 +6,7 @@ in
 pkgs.dockerTools.streamLayeredImage {
   name = "dendrite-demo-pinecone";
   tag = "latest";
+  created = builtins.substring 0 8 lastModifiedDate;
 
   contents = [
     dendrite-demo-pinecone

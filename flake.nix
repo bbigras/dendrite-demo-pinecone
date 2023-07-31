@@ -46,7 +46,10 @@
       {
         packages.default = (import ./build.nix { inherit pkgs dendrite; }).main;
         packages.dendrite = (import ./build.nix { inherit pkgs dendrite; }).main;
-        packages.dockerImage = import ./image.nix { inherit pkgs dendrite; };
+        packages.dockerImage = import ./image.nix {
+          inherit pkgs dendrite;
+          inherit (self) lastModifiedDate;
+        };
         devShells.default = import ./shell.nix { inherit pkgs pre-commit-hooks system; };
       };
   };
