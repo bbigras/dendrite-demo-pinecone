@@ -11,7 +11,10 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-parts = {
+      url = "flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
     dendrite = {
       url = "github:matrix-org/dendrite";
       flake = false;
@@ -24,20 +27,27 @@
       url = "github:cachix/pre-commit-hooks.nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
       };
     };
   };
 
-  outputs = { nixpkgs, flake-utils, dendrite, pre-commit-hooks, ... }:
-    flake-utils.lib.eachDefaultSystem
-      (system:
-        let pkgs = import nixpkgs { inherit system; }; in
-        {
-          defaultPackage = (import ./build.nix { inherit pkgs dendrite; }).main;
-          packages.dendrite = (import ./build.nix { inherit pkgs dendrite; }).main;
-          packages.dockerImage = import ./image.nix { inherit pkgs dendrite; };
-          devShell = import ./shell.nix { inherit pkgs pre-commit-hooks system; };
-        }
-      );
+  outputs = inputs@{ self, flake-parts, nixpkgs, pre-commit-hooks, dendrite, ... }: flake-parts.lib.mkFlake { inherit inputs; } {
+    systems = [
+      "aarch64-linux"
+      "x86_64-linux"
+    ];
+
+    perSystem = { system, ... }:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+        };
+      in
+      {
+        packages.default = (import ./build.nix { inherit pkgs dendrite; }).main;
+        packages.dendrite = (import ./build.nix { inherit pkgs dendrite; }).main;
+        packages.dockerImage = import ./image.nix { inherit pkgs dendrite; };
+        devShells.default = import ./shell.nix { inherit pkgs pre-commit-hooks system; };
+      };
+  };
 }
