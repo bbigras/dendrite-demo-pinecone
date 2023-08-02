@@ -30,6 +30,8 @@ jobs:
       - name: Update vendorSha256
         if: ${{ env.before_rev != env.after_rev }}
         run: ./update.sh
+      - name: build
+        run: nix run nixpkgs#nix-build-uncached packages.nix
       - name: git commit (amend)
         run: |
           git status --porcelain
