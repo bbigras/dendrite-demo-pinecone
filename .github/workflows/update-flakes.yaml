@@ -32,8 +32,12 @@ jobs:
         run: ./update.sh
       - name: git commit (amend)
         run: |
+          git status --porcelain
           if git status --porcelain | grep -q '^.M'; then
+            echo run git commit
             git commit --amend --no-edit
+          else
+            echo no changes
           fi
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
