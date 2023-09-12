@@ -3,11 +3,11 @@
     "dendrite": {
       "flake": false,
       "locked": {
-        "lastModified": 1694529891,
-        "narHash": "sha256-PF0yST4j2fU+N4Gdo/jOTnrXPAg1SUdK8vKHxpw0Owo=",
+        "lastModified": 1694532744,
+        "narHash": "sha256-7QVwwWW2sNsQGe01B+ycg7iIU9fm4qxjZMy/VuYZQHQ=",
         "owner": "matrix-org",
         "repo": "dendrite",
-        "rev": "bea73c765a5c3bfda50df67461771c1f3793030a",
+        "rev": "058081e68e4e23400645c6206cedddba8a31507e",
         "type": "github"
       },
       "original": {
