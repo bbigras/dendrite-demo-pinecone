@@ -10,7 +10,7 @@ pkgs.dockerTools.streamLayeredImage {
 
   contents = [
     dendrite-demo-pinecone
-    pkgs.cacert
+    pkgs.dockerTools.caCertificates
   ];
   config = {
     Entrypoint = [
