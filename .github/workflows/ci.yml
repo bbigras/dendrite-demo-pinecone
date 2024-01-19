@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v4
     - uses: DeterminateSystems/magic-nix-cache-action@main
     - uses: cachix/install-nix-action@v25
-    - uses: cachix/cachix-action@v12
+    - uses: cachix/cachix-action@v14
       with:
         name: dendrite-demo-pinecone
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
