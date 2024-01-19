@@ -20,10 +20,7 @@
       url = "github:matrix-org/dendrite";
       flake = false;
     };
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
-      flake = false;
-    };
+    flake-compat.url = "github:edolstra/flake-compat";
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs = {
