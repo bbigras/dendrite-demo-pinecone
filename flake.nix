@@ -38,12 +38,7 @@
       "x86_64-linux"
     ];
 
-    perSystem = { system, ... }:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-        };
-      in
+    perSystem = { pkgs, system, ... }:
       {
         packages.default = (import ./build.nix { inherit pkgs dendrite; }).main;
         packages.dendrite = (import ./build.nix { inherit pkgs dendrite; }).main;
