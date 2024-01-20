@@ -6,5 +6,10 @@ set -euo pipefail
 set -x
 
 vendorHash="$(nix-instantiate ./packages.nix -A dendrite.vendorHash --eval 2>/dev/null | jq -r . || echo "missing_vendorHash")"
-newvendorHash="$(nix run nixpkgs#nix-prefetch "{ sha256 }: let p=(import ./packages.nix).dendrite; in p.goModules.overrideAttrs (_: { vendorHash = sha256; })")"
+
+newRev="$(nix-instantiate ./packages.nix -A dendrite.src.rev --eval | jq -r .)"
+
+# shellcheck disable=SC2086
+newvendorHash="$(nix-prefetch-github --rev ${newRev} matrix-org dendrite | jq -r .hash)"
+
 sed -i "s|${vendorHash}|${newvendorHash}|" build.nix

@@ -29,7 +29,7 @@ jobs:
       - run: echo "after_rev=$(nix flake metadata --json | jq '.locks.nodes.dendrite.locked.rev')" >> "$GITHUB_ENV"
       - name: Update vendorSha256
         if: ${{ env.before_rev != env.after_rev }}
-        run: ./update.sh
+        run: nix develop --command bash ./update.sh
       - name: git commit (amend)
         run: |
           git status --porcelain
