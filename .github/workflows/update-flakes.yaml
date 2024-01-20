@@ -37,10 +37,12 @@ jobs:
             echo run git commit
             git add .
             git commit --amend --no-edit
+            echo "need_pr=1" >> "$GITHUB_ENV"
           else
             echo no changes
           fi
       - name: Create Pull Request
+        if: ${{ env.need_pr == 1 }}
         uses: peter-evans/create-pull-request@v5
         with:
           branch: flake-update
@@ -49,6 +51,7 @@ jobs:
           title: "flake: update"
           token: ${{ secrets.PAT }}
       - name: Enable Pull Request Automerge
+        if: ${{ env.need_pr == 1 }}
         run: gh pr merge --rebase --auto --delete-branch "flake-update"
         env:
           GH_TOKEN: ${{ secrets.PAT }}
