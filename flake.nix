@@ -38,11 +38,13 @@
 
     perSystem = { pkgs, system, ... }:
       {
-        packages.default = (import ./build.nix { inherit pkgs dendrite; }).main;
-        packages.dendrite = (import ./build.nix { inherit pkgs dendrite; }).main;
-        packages.dockerImage = import ./image.nix {
-          inherit pkgs dendrite;
-          inherit (self) lastModifiedDate;
+        packages = {
+          default = (import ./build.nix { inherit pkgs dendrite; }).main;
+          dendrite = (import ./build.nix { inherit pkgs dendrite; }).main;
+          dockerImage = import ./image.nix {
+            inherit pkgs dendrite;
+            inherit (self) lastModifiedDate;
+          };
         };
         devShells.default = import ./shell.nix { inherit pkgs pre-commit-hooks system; };
       };
